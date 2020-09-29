@@ -26,13 +26,21 @@ inline double degrees_to_radians(double degrees) {
 
 // Generate  a random within interval [0,1).
 inline double random_double(){ 
-    return rand() / RAND_MAX + 1.0; 
+    return rand() / (RAND_MAX + 1.0); 
 }
 
 // Generate a random number within a given interval  
 inline double random_double(double min, double max) {
     return min + (max-min)*random_double();
 }
+
+// Clamp the value of x between min and max; 
+inline double clamp (double x, double min, double max){ 
+    if (x < min ) return min; 
+    if (x > max) return max; 
+    return x; 
+}
+
 // Common Headers
 
 #include "ray.h"
