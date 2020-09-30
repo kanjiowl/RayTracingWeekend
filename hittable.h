@@ -1,15 +1,19 @@
 #ifndef HITTABLE_H
 #define HITTABLE_H
 
+#include "rtweekend.h"
 #include "ray.h"
 
+class material; 
+
+// Information about the last hit
 struct hit_record 
 { 
     point3 p; 
     vec3 normal; 
     double t; 
     bool front_face;
-
+    shared_ptr<material> mat_ptr;
     inline void set_face_normal(const Ray& r, const vec3& outward_normal) {
         front_face = dot(r.direction(), outward_normal) < 0;
         normal = front_face ? outward_normal :-outward_normal;

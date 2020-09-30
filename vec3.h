@@ -107,4 +107,24 @@ vec3 random_in_unit_sphere(){
         return p; 
     }
 }
+
+
+// vec3 random_in_unit_vector(){
+//     auto a = random_double(0, 2 * pi); 
+//     auto z = random_double(-1, 1); 
+//     auto r = sqrt(1 - z*z); // projection of the radius vector on the xy plane
+//     return vec3(r * cos(a) , r * sin(a), z); 
+// }
+
+// using spherical cordinate systems
+vec3 random_in_unit_vector(){
+    auto theta = random_double(0, 2 * pi); 
+    auto phi = random_double(0, 2 * pi); 
+    return vec3(sin(theta) * sin(phi) , cos(theta) , sin(theta) * cos(phi)); 
+}
+
+vec3 reflect(const vec3& v, const vec3& n) {
+    return v - 2*dot(v,n)*n;
+}
+
 #endif
